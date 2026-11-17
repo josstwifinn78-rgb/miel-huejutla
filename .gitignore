@@ -1,0 +1,7 @@
+# Claves y configuración local: NUNCA se suben
+config/config.php
+*.zip
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

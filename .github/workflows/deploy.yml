@@ -1,0 +1,69 @@
+name: CI y despliegue a InfinityFree
+
+on:
+  push:
+    branches: [main, desarrollo, "feature/**"]
+  pull_request:
+    branches: [main, desarrollo]
+
+jobs:
+  pruebas:
+    name: Pruebas básicas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+
+      - name: Revisar sintaxis de todos los archivos PHP
+        run: find . -name "*.php" -not -path "./.git/*" -print0 | xargs -0 -n1 php -l
+
+      - name: Verificar archivos indispensables
+        run: |
+          for f in index.php health.php robots.php sitemap.php .htaccess config/config.example.php includes/header.php includes/footer.php buscador/buscar.php database/schema_infinityfree.sql; do
+            test -f "$f" || { echo "Falta $f"; exit 1; }
+          done
+          echo "Archivos indispensables: OK"
+
+      - name: Verificar plantilla de configuración
+        run: |
+          for c in DB_HOST DB_NAME DB_USER DB_PASS SITE_URL; do
+            grep -q "const $c" config/config.example.php || { echo "Falta $c en config.example.php"; exit 1; }
+          done
+          echo "Plantilla de configuración: OK"
+
+      - name: Verificar que no se suban claves
+        run: |
+          if git ls-files --error-unmatch config/config.php 2>/dev/null; then
+            echo "config/config.php no debe estar en el repositorio"; exit 1
+          fi
+          echo "Sin claves en el repositorio: OK"
+
+  despliegue:
+    name: Despliegue a producción (solo main)
+    needs: pruebas
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Subir sitio por FTP a InfinityFree
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /htdocs/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            config/config.php
+            config/config.example.php
+            database/**
+            docs/**
+            scripts/**
+            README.md

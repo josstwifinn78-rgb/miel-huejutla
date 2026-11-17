@@ -1,0 +1,14 @@
+Options -Indexes
+DirectoryIndex index.php
+RewriteEngine On
+RewriteBase /
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+RewriteRule ^robots\.txt$ robots.php [L]
+RewriteRule ^producto/([a-z0-9-]+)/?$ index.php?page=product&slug=$1 [QSA,L]
+RewriteRule ^productos/?$ index.php?page=products [QSA,L]
+RewriteRule ^nosotros/?$ index.php?page=about [QSA,L]
+RewriteRule ^blog/?$ index.php?page=blog [QSA,L]
+RewriteRule ^blog/([a-z0-9-]+)/?$ index.php?page=article&slug=$1 [QSA,L]
+RewriteRule ^contacto/?$ index.php?page=contact [QSA,L]
+RewriteRule ^carrito/?$ index.php?page=cart [QSA,L]
+RewriteRule ^comprar/?$ index.php?page=checkout [QSA,L]
