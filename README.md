@@ -38,3 +38,4 @@ Solo al llegar a `main`, el sitio se sube por FTP a InfinityFree.
 1. Copia `config/config.example.php` como `config/config.php` y edita los valores.
 2. Crea una base MySQL e importa `database/schema_infinityfree.sql`.
 3. Importa `database/actualizar_imagenes.sql` para asignar las fotos.
+Redes sociales: pendientes de configurar
