@@ -1,0 +1,22 @@
+.help-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:34px;margin-top:10px}
+.help-box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:6px 24px 24px;box-shadow:var(--shadow)}
+.help-box h2{margin-bottom:0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hp-field{position:absolute;left:-9999px;height:0;overflow:hidden}
+.ticket-card{margin-top:22px;border:1px solid var(--line);border-radius:8px;background:white;padding:18px 20px}
+.ticket-card h3{margin:0 0 8px}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;background:#f3ead2;color:#6b4a12;font-size:12px;font-weight:700;margin-right:6px}
+.badge-estado{background:#e4f0e6;color:#24513d}
+.timeline{list-style:none;margin:14px 0 0;padding:0;border-left:3px solid var(--line)}
+.timeline li{padding:0 0 12px 14px}
+.timeline p{margin:3px 0 0;font-size:14px}
+.table-wrap{overflow-x:auto;margin:18px 0}
+.data-table{width:100%;border-collapse:collapse;font-size:14px;background:white}
+.data-table th,.data-table td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.data-table th{background:#f6efdc;color:var(--green-dark)}
+.admin-tickets details{border:1px solid var(--line);border-radius:6px;background:white;margin:10px 0;padding:10px 14px}
+.admin-tickets summary{cursor:pointer;font-weight:600}
+.stat-row{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+.stat-box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 16px;min-width:130px}
+.stat-box strong{display:block;font-size:22px;color:var(--green-dark)}
+@media(max-width:640px){.form-row{grid-template-columns:1fr}}

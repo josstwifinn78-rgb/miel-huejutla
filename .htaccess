@@ -4,6 +4,8 @@ RewriteEngine On
 RewriteBase /
 RewriteRule ^sitemap\.xml$ sitemap.php [L]
 RewriteRule ^robots\.txt$ robots.php [L]
+RewriteRule ^servicios/?$ servicios.php [L]
+RewriteRule ^ayuda/?$ ayuda.php [QSA,L]
 RewriteRule ^producto/([a-z0-9-]+)/?$ index.php?page=product&slug=$1 [QSA,L]
 RewriteRule ^productos/?$ index.php?page=products [QSA,L]
 RewriteRule ^nosotros/?$ index.php?page=about [QSA,L]
