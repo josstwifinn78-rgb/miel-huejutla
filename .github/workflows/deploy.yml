@@ -23,7 +23,7 @@ jobs:
 
       - name: Verificar archivos indispensables
         run: |
-          for f in index.php health.php robots.php sitemap.php .htaccess config/config.example.php includes/header.php includes/footer.php buscador/buscar.php database/schema_infinityfree.sql; do
+          for f in index.php health.php robots.php sitemap.php .htaccess config/config.example.php includes/header.php includes/footer.php buscador/buscar.php database/schema_infinityfree.sql ayuda.php servicios.php includes/mesa_ayuda.php includes/enlaces.php admin/tickets.php database/itil_mesa_ayuda.sql; do
             test -f "$f" || { echo "Falta $f"; exit 1; }
           done
           echo "Archivos indispensables: OK"

@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config/config.php';
 header('Content-Type: application/xml; charset=utf-8');
-$urls = [SITE_URL . '/', SITE_URL . '/productos', SITE_URL . '/nosotros', SITE_URL . '/blog', SITE_URL . '/contacto'];
+$urls = [SITE_URL . '/', SITE_URL . '/productos', SITE_URL . '/nosotros', SITE_URL . '/blog', SITE_URL . '/contacto', SITE_URL . '/servicios', SITE_URL . '/ayuda'];
 try {
     foreach (db()->query('SELECT url_amigable FROM productos WHERE activo=1') as $row) $urls[] = SITE_URL . '/producto/' . rawurlencode($row['url_amigable']);
     foreach (db()->query('SELECT url_amigable FROM articulos_blog WHERE activo=1') as $row) $urls[] = SITE_URL . '/blog/' . rawurlencode($row['url_amigable']);

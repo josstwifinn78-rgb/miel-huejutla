@@ -21,6 +21,8 @@
   elseif ($page === 'about') $canonical .= 'nosotros';
   elseif ($page === 'blog') $canonical .= 'blog';
   elseif ($page === 'contact') $canonical .= 'contacto';
+  elseif ($page === 'help') $canonical .= 'ayuda';
+  elseif ($page === 'services') $canonical .= 'servicios';
   elseif ($page === 'product') $canonical .= 'producto/' . rawurlencode((string)($_GET['slug'] ?? ''));
   elseif ($page === 'article') $canonical .= 'blog/' . rawurlencode((string)($_GET['slug'] ?? ''));
   ?>
@@ -28,6 +30,7 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/buscador.css">
+  <link rel="stylesheet" href="assets/css/mesa-ayuda.css">
 
   <?php if (defined('GSC_TOKEN') && GSC_TOKEN !== ''): ?>
   <meta name="google-site-verification" content="<?=e(GSC_TOKEN)?>">
@@ -45,7 +48,7 @@
 <body>
 <header class="site-header"><a class="brand" href="index.php"><img src="assets/img/favicon.svg" alt="Logotipo de Miel de Huejutla, gota de miel" title="Miel de Huejutla" width="38" height="38"><span>Miel de <strong>Huejutla</strong><small>Sabor de la Huasteca</small></span></a>
 <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-<nav class="main-nav"><a href="index.php">Inicio</a><a href="productos">Productos</a><a href="nosotros">Nosotros</a><a href="blog">Blog</a><a href="contacto">Contacto</a><a class="cart-link" href="carrito">Carrito <b><?=cart_count()?></b></a></nav>
+<nav class="main-nav"><a href="index.php">Inicio</a><a href="productos">Productos</a><a href="nosotros">Nosotros</a><a href="blog">Blog</a><a href="contacto">Contacto</a><a href="ayuda">Ayuda</a><a class="cart-link" href="carrito">Carrito <b><?=cart_count()?></b></a></nav>
 
 <form class="searchbar" action="index.php" method="get" data-searchbar>
   <input type="hidden" name="page" value="search">
