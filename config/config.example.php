@@ -19,6 +19,7 @@ const SITE_NAME = 'Miel Artesanal de Huejutla';
 // const URL_INSTAGRAM = 'https://www.instagram.com/TU_CUENTA';
 // const URL_WHATSAPP = 'https://wa.me/52TUNUMERO';
 // const URL_MEET = 'https://meet.google.com/TU-ENLACE';
+// const ADMIN_PASS = 'cambia-esta-contrasena-larga';   // activa el panel /admin/tickets.php
 const CURRENCY = 'MXN';
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
